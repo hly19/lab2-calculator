@@ -15,7 +15,6 @@
             android:id="@+id/loanAmountTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:text="Loan Amount"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
@@ -23,7 +22,6 @@
             android:id="@+id/loanAmountET"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:inputType="textPersonName"
             android:hint="50000" />
 

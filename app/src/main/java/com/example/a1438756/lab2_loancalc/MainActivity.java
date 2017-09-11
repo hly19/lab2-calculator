@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     TextView totalPaymentTV;
     TextView totalInterestTV;
 
+    boolean valid;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,9 +39,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void calculateAll(View v){
-        calMonthlyPayment(v);
-        calTotalPayment(v);
-        calTotalInterest(v);
+        valid = validateInput();
+        if(valid){
+            calMonthlyPayment(v);
+            calTotalPayment(v);
+            calTotalInterest(v);
+        }
+        else{
+            loanAmount.setText("Enter only a number bigger than 0.");
+            loanTerm.setText("Enter only a number bigger than 0");
+            interestRate.setText("Enter only a number bigger than 0");
+        }
     }
 
     public void calMonthlyPayment(View v){
@@ -75,5 +85,22 @@ public class MainActivity extends AppCompatActivity {
         monthlyPaymentTV.setText("");
         totalPaymentTV.setText("");
         totalInterestTV.setText("");
+    }
+
+    public boolean validateInput(){
+        monthlyInterest = Double.parseDouble(interestRate.getText().toString());
+        numberOfPayments = Double.parseDouble(loanTerm.getText().toString());
+        totalLoan = Double.parseDouble(loanAmount.getText().toString());
+
+        if(interestRate.getText().toString().matches("[0-9]+") && loanTerm.getText().toString().matches("[0-9]+") && loanAmount.getText().toString().matches("[0-9]+")) {
+            if (monthlyInterest < 1 || numberOfPayments < 1 || totalLoan < 1) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+        else {
+            return false;
+        }
     }
 }
