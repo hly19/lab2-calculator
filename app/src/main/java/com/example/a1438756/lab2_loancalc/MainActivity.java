@@ -24,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
     TextView totalInterestTV;
 
     boolean valid;
+    String loan;
+    String term;
+    String rate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,16 +42,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void calculateAll(View v){
-        valid = validateInput();
+        loan = loanAmount.getText().toString();
+        term = loanTerm.getText().toString();
+        rate = interestRate.getText().toString();
+
+        valid = validateInput(loan, term, rate, v);
         if(valid){
             calMonthlyPayment(v);
             calTotalPayment(v);
             calTotalInterest(v);
-        }
-        else{
-            loanAmount.setText("Enter only a number bigger than 0.");
-            loanTerm.setText("Enter only a number bigger than 0");
-            interestRate.setText("Enter only a number bigger than 0");
         }
     }
 
@@ -87,19 +89,23 @@ public class MainActivity extends AppCompatActivity {
         totalInterestTV.setText("");
     }
 
-    public boolean validateInput(){
-        monthlyInterest = Double.parseDouble(interestRate.getText().toString());
-        numberOfPayments = Double.parseDouble(loanTerm.getText().toString());
-        totalLoan = Double.parseDouble(loanAmount.getText().toString());
-
-        if(interestRate.getText().toString().matches("[0-9]+") && loanTerm.getText().toString().matches("[0-9]+") && loanAmount.getText().toString().matches("[0-9]+")) {
-            if (monthlyInterest < 1 || numberOfPayments < 1 || totalLoan < 1) {
+    public boolean validateInput(String loan, String term, String rate, View v){
+        if(loan.matches("[0-9]+") && term.matches("[0-9]+") && rate.matches("[0-9]+")) {
+            if (Double.parseDouble(loan) < 1 || Double.parseDouble(term) < 1 || Double.parseDouble(rate) < 1) {
+                clearAll(v);
+                loanAmount.setHint("Value cannot be 0.");
+                loanTerm.setHint("Value cannot be 0.");
+                interestRate.setHint("Value cannot be 0.");
                 return false;
             } else {
                 return true;
             }
         }
         else {
+            clearAll(v);
+            loanAmount.setHint("Numbers only.");
+            loanTerm.setHint("Numbers only.");
+            interestRate.setHint("Numbers only.");
             return false;
         }
     }

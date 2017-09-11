@@ -4,49 +4,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.a1438756.lab2_loancalc.MainActivity">
+    tools:context="com.example.a1438756.lab2_loancalc.MainActivity"
+    android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:weightSum="1">
 
         <TextView
             android:id="@+id/loanAmountTV"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="0.50"
             android:text="Loan Amount"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:layout_weight=".40"/>
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
         <EditText
             android:id="@+id/loanAmountET"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
             android:hint="50000"
-            android:layout_weight=".60" />
-
+            android:inputType="textPersonName"
+            android:layout_weight=".50"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:weightSum="1">
 
         <TextView
             android:id="@+id/termLoanTV"
-            android:layout_width=".40dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight=".50"
             android:text="Term of Loan (Years)"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
         <EditText
             android:id="@+id/termLoanET"
-            android:layout_width=".60dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight=".50"
             android:inputType="textPersonName"
             android:hint="7" />
     </LinearLayout>
@@ -54,50 +56,54 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:weightSum="1">
 
         <TextView
             android:id="@+id/interestRateTV"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Interest Rate"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:layout_weight=".50"/>
 
         <EditText
             android:id="@+id/interestRateET"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
+            android:layout_weight=".50"
             android:inputType="textPersonName"
             android:hint="7.5" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
 
         <Button
             android:id="@+id/calculateBtn"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:onClick="calculateAll"
-            android:text="Calculate" />
+            android:text="Calculate"
+            android:layout_weight=".60"/>
 
         <Button
             android:id="@+id/clearBtn"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:onClick="clearAll"
-            android:text="Clear" />
-
+            android:text="Clear"
+            android:layout_weight=".40"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
 
         <TextView
             android:id="@+id/resultsTV"
@@ -109,58 +115,61 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
 
         <TextView
             android:id="@+id/monthlyPaymentTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight=".40"
             android:text="Monthly Payment" />
 
         <TextView
             android:id="@+id/mPaymentResultTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight=".60" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
 
         <TextView
             android:id="@+id/totalPaymentTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight=".40"
             android:text="Total Payment" />
 
         <TextView
             android:id="@+id/totalPaymentResultTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight=".60" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
 
         <TextView
             android:id="@+id/totalInterestTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight=".40"
             android:text="Total Interest" />
 
         <TextView
             android:id="@+id/totalInterestResultTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight=".60" />
     </LinearLayout>
 </LinearLayout>
